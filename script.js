@@ -12,6 +12,11 @@ const resume = {
   email: 'tenzkunsang648@gmail.com',
   education: [
     {
+      school: 'Northeastern University',
+      degree: 'MS Computer Science',
+      graduationDate: 'Present',
+    },
+    {
       school: 'Carleton College',
       degree: 'BA Mathematics',
       graduationDate: '2020',
@@ -28,6 +33,7 @@ const resume = {
     }
   ],
   certificates: [
+    'Salesforce Certified Platform Developer II',
     'Salesforce Certified Platform Developer I',
     'Salesforce Certified Tableau CRM and Einstein Discovery Consultant',
     'Salesforce Certified Platform App Builder Certification',
