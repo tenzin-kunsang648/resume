@@ -66,7 +66,7 @@ const resume = {
     {
       jobTitle: 'Senior Software Developer, SaaS',
       startDate: 'July 2020',
-      endDate: 'Present',
+      endDate: 'July 2023',
       employer: 'ICF',
       city: 'Remote',
       achievements: [
