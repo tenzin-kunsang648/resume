@@ -156,7 +156,7 @@ const resume = {
       ]
     },
     ],
-  photo: 'https://lh3.googleusercontent.com/SVudPmh_HhGDun40rmq4BpgVr0mR-S_1h01oqHwnjRt4Yxg1Kvs7Jveujkpma3GtJSniHPuPFnCw4sxgGJrtOKaQOH2-2xpiPDJdBylFKNlVjusHAaj11V9JD0SaNh_Sz1bUty0z8_U=w2400?source=screenshot.guru',
+  photo: 'https://photos.google.com/share/AF1QipOHgg_63g08tSbCXMDfMV9nqZ5ykJUzvd03uSOyiKCBZQOzJO-xoRnFJRxAdVeKTQ/photo/AF1QipMQZId9KbTVdzHgKoDB3jeLmzytpQUdwdzkKcC2?key=ckEzel9uQnFzclNSMnRIbWhvZ1JrX0M2NW9KSzRB',
 }
 
 const formatResume = (r) => ({
