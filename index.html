@@ -1,321 +1,1120 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Tenzin Kunsang's Resume</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenzin Kunsang</title>
 
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/tk.JPEG" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resume/CV</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
-    <!-- Add Web Animations Polyfill :) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@proyecto26/animatable-component@1.1.10/dist/animatable-component/animatable-component.esm.js"></script>
-  </head>
-  <body class="d-none">
-    <section id="app" class="container-fluid">
-      <header class="header position-relative">
-        <animatable-component autoplay animation="fadeInDownBig"  easing="ease-in-out" duration="1200">
-          <div class="headLine position-absolute"></div>
-        </animatable-component>
-        <div class="row">
-          <div class="col">
-            <animatable-component
-              autoplay
-              animation="fadeInLeft"
-              easing="ease-in-out"
-              duration="1200"
-            >
-              <h1 class="firstName text-break">
-                {{ firstName }}
-              </h1>
-            </animatable-component>
-            <animatable-component
-              autoplay
-              animation="fadeInDown"
-              easing="ease-in-out"
-              duration="1200"
-            >
-              <h2 class="lastName text-nowrap">
-                {{ lastName }}
-              </h2>
-            </animatable-component>
-            <animatable-component
-              autoplay
-              animation="fade-in-left"
-              easing="ease-in-out"
-              duration="1200"
-            >
-              <p class="jobTitle">
-                <i class="bi bi-circle-fill"></i>
-                <span class="text-break">
-                  {{ jobTitle }}
-                </span>
-              </p>
-             </animatable-component>
-          </div>
-          <div v-if="!!photo" class="col-auto d-none d-lg-block d-print-block">
-            <animatable-component autoplay animation="rotateIn" easing="ease-in" duration="1200">
-              <img v-bind:src.prop="photo" class="photo border border-2 border-dark rounded-circle img-fluid float-end img-thumbnail">
-            </animatable-component>
-          </div>
-        </div>
-        <animatable-component autoplay animation="fadeInUpBig"  easing="ease-in-out" duration="1200">
-          <div class="middleLine position-absolute"></div>
-        </animatable-component>
-      </header>
-      
-      <section class="content">
-        
-        <div class="row">
-          <div class="col personal-details me-4">
-            <div class="row list-item me-5">
-              <div class="col-auto">
-                <animatable-component autoplay animation="heartBeat" easing="ease-in" duration="1200">
-                  <div class="icon d-flex justify-content-center">
-                    <i class="bi bi-geo-alt-fill" role="img" aria-label="Location"></i>
-                  </div>
-                </animatable-component>
-              </div>
-              <div class="col" style="white-space: pre-line;">
-                <p>{{ address }}</p>
-              </div>
-            </div>
-            <div v-if="!!phone" class="row list-item me-5">
-              <div class="col-auto align-self-center">
-                <animatable-component autoplay animation="swing" easing="ease-in" duration="1200">
-                  <div class="icon d-flex justify-content-center">
-                    <i class="bi bi-telephone-fill" role="img" aria-label="Telephone"></i>
-                  </div>
-                </animatable-component>
-              </div>
-              <div class="col">
-                <a v-bind:href="'tel:'+ phone" class="text-decoration-none">
-                  <p>{{ phone }}</p>
-                </a>
-              </div>
-            </div>
-            <div class="row list-item me-5">
-              <div class="col-auto align-self-center">
-                <animatable-component autoplay animation="flip" easing="ease-in" duration="1200">
-                  <div class="icon d-flex justify-content-center">
-                    <i class="bi bi-envelope-fill" role="img" aria-label="Email"></i>
-                  </div>
-                </animatable-component>
-              </div>
-              <div class="col">
-                <a v-bind:href="'mailto:'+ email" class="text-decoration-none">
-                  <p>{{ email }}</p>
-                </a>
-              </div>
-            </div>
-            <div class="row mt-5 me-5">
-              <div class="col">
-                <p class="title">Education</p>
-              </div>
-            </div>
-            <div class="row record" v-for="e in education">
-              <div class="col-auto bullet">
-                <i class="bi bi-record-circle"></i>
-              </div>
-              <div class="col">
-                <p class="fw-bold text-uppercase">
-                  {{ e.degree }}
-                </p>
-                <p class="fw-bold text-uppercase">
-                  {{ e.school }}, {{ e.graduationDate }}
-                </p>
-                <p>{{ e.description }}</p>
-              </div>
-            </div>
-            <div class="row mt-5 me-5">
-              <div class="col p-0">
-                <p class="title">Links</p>
-              </div>
-            </div>
-            <div class="row record me-4" v-for="l in links">
-              <div class="col-auto bullet mb-5">
-                <i class="bi bi-record-circle"></i>
-              </div>
-              <div class="col">
-                <p>
-                  {{ l.label }}:
-                  <a class="text-reset" target="_blank" v-bind:href.prop="l.link">
-                    {{ l.link }}
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div class="row mt-5 me-5">
-              <div class="col p-0">
-                <p class="title">Certificates</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <ul class="ms-2">
-                  <li class="pb-2" v-for="cert in certificates">
-                    {{ cert }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="page-break"></div>
-            <p style="white-space: pre-line;">
-            <p style="white-space: pre-line;">
-            <br><br><br>
-            <br>
-                  
-            <div class="row mt-5 me-5">
-              <div class="col p-0">
-                <p class="title">Skills</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <ul class="ms-2">
-                  <li class="pb-2" v-for="(skill, index) in skills" :key="index">
-                    {{ skill }}
-<!--                     <template v-if="skill.includes('Apex')">
-                <div class="page-break"></div>
-                  <p style="white-space: pre-line;">
-                    <p style="white-space: pre-line;">
-                      <br><br><br>
-                      <br> -->
 
-                    </template>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="row mt-5 me-5">
-              <div class="col p-0">
-                <p class="title">Languages</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <ul class="ms-2">
-                  <li class="pb-2" v-for="language in languages">
-                    {{ language }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col col-8">
-            <animatable-component
-              autoplay
-              animation="fade-in-right"
-              easing="ease-in-out"
-              duration="1200"
-            >
-              <div class="row bullet">
-              <div class="col-auto pt-2">
-                <i class="bi bi-circle-fill"></i>
-              </div>
-              <div class="col">
-                <p class="title">About Me</p>
-              </div>
-            </div>
-            </animatable-component>
-            <animatable-component
-              autoplay
-              animation="fade-in-right"
-              easing="ease-in-out"
-              duration="1200"
-            >
-              <div class="row record bullet">
-              <div class="col-auto">
-                <i class="bi bi-record-circle"></i>
-              </div>
-              <div class="col">
-                <p style="white-space: pre-line; word-break: normal;">{{ professionalSummary }}</p>
-              </div>
-            </div>
-            </animatable-component>
-            <div class="row mt-5">
-              <div class="col-auto bullet pt-2">
-                <i class="bi bi-circle-fill"></i>
-              </div>
-              <div class="col">
-                <p class="title">Work Experience</p>
-              </div>
-            </div>
-            <div class="row record mb-4 bullet" v-for="employment in employmentHistory">
-              <div class="col-auto">
-                <i class="bi bi-record-circle"></i>
-              </div>
-              <div class="col">
-                <p class="text-uppercase fw-bold position-relative">
-                  {{ employment.jobTitle }}
-                  <span>&nbsp;|&nbsp;{{ employment.startDate }} - {{ employment.endDate }}</span>
-                </p>
-                <p class="text-lowercase fst-italic fw-bold">
-                  {{ employment.employer }}, {{ employment.city }}
-                </p>
-                <p class="mb-0" style = "word-break:normal;" v-for="achievement in employment.achievements">
-                  • {{ achievement }}
-                </p>
-              </div>
-              <template v-if="employment.jobTitle.includes('Software Developer Intern')">
-                <div class="page-break"></div>
-                  <p style="white-space: pre-line;">
-                    <p style="white-space: pre-line;">
-                      <br><br><br>
-                    </template>
-            </div>
-            
-            <div class="row mt-5">
-              <div class="col-auto bullet pt-2">
-                <i class="bi bi-circle-fill"></i>
-              </div>
-              <div class="col">
-                <p class="title">Projects</p>
-              </div>
-            </div>
-            <div class="row record mb-4 bullet" v-for="pro in projects">
-              <div class="col-auto">
-                <i class="bi bi-record-circle"></i>
-              </div>
-              <div class="col">
-                <p class="text-uppercase fw-bold position-relative">
-                  {{ pro.title }}
-                  
-                <p class="mb-0" style = "word-break:normal;" v-for="achievement in pro.achievements">
-                  • {{ achievement }}
-                </p>
-              </div>
-            </div>
-          </div>
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/tk.JPEG" alt="Tenzin Kunsang" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Tenzin Kunsang">Tenzin Kunsang</h1>
+
+          <p class="title">"I’m nobody! Who are you?" <br> Emily Dickinson</p>
         </div>
-      </section>
-    </section>
-    <div class="btn-group-fab d-print-none">
-      <div>
-        <button onclick="javascript:window.print()" type="button" class="btn btn-main btn-primary" title="Print">
-          <i class="bi bi-printer fs-3"></i>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
         </button>
+
       </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:tenzinkunsang.agi@gmail.com" class="contact-link">tenzinkunsang.agi@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+16124619711" class="contact-link">+1 (612) 461-9711</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Arlington, Massachusetts, USA</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/tenzin-kunsang648" class="social-link">
+              <ion-icon class = "socials-icons" name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/tenzin-kunsang648/" class="social-link">
+              <ion-icon class = "socials-icons" name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/lifeasitseemsinpictures/" class="social-link">
+              <ion-icon class = "socials-icons" name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Projects</button>
+          </li>
+
+          <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li> -->
+
+          <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li> -->
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+
+          <p>
+            Currently pursuing a master's degree in computer science with a focus on Artificial Intelligence and Data Science, 
+            I blend my expertise in mathematics, software development, and data engineering to delve deep into the nuances of 
+            computer vision, machine learning, and natural language processing. With three years as a full-stack developer, 
+            I have spearheaded data-driven projects, integrated complex databases with intuitive front-end interfaces, applied 
+            exploratory statistical analysis and employed machine learning algorithms to refine data schemas and enhance strategic 
+            decision-making. My work included lots and lots of writing technical documentations for stakeholders and 
+            technical architects. 
+          </p>
+          
+          <p>
+            In tandem, I've served as a mentor to junior developers, guiding them through the complexities 
+            of code and analytical thought and best practices, and volunteered my knowledge in high-school level mathematics to 
+            uplift the Tibetan community through Yindayin. As a secretary for the Regional Tibetan Women's Association in Minneapolis, 
+            I contributed my organizational and design skills to drive initiatives such as providing scholarships to some of the brightest 
+            minds in the Tibetan community. My professional ethos and personal philosophy are rooted in leveraging data and sharpening intuition
+            - to evolve through continuously learning and application of our knowledge for the good of our communities, no matter the scale of our impact.
+          </p>
+
+          <p>
+            During my leisure hours, I enjoy devling into my internal world through writing poems and proses, 
+            reading books, practicing yoga, and listening to music. I also enjoy hiking, spending time with 
+            my friends and family, exploring new places in familiar surroundings, and watching films —both the 
+            masterpieces and the not-so-great ones, especially when I'm in the mood for something less mentally taxing. 
+            These days, I have been drawn to films that embrace the ambiance
+            and feelings and slowness similar to "The Banshees of Inisherin", "Frances Ha", and "Past Lives". 
+          </p>
+        </section>
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Tenzin Kunsang" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Tenzin Kunsang</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  a secret space for fun.  
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Northeastern University</h4>
+              <p class="timeline-degree-info">
+                Candidate for a Master's Degree in Computer Science, Concentration : AI and Data Science <br>
+                GPA: 4.0/4.0
+              </p>
+
+              <span>2023 — 2025</span>
+
+              <p class="timeline-text">
+                Courses: Pattern Recognition and Computer Vision, Algorithms, Unsupervised Machine Learning, Mobile Application Development
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Carleton College</h4>
+              <p class="timeline-degree-info">
+                Bachelor of Arts in Mathematics
+              </p>
+              <span>2016 — 2020</span>
+
+              <p class="timeline-text">
+                <strong>Technical Courses:</strong> Probability, Artificial Intelligence, Real-Time Systems, Data Structures, Computer Organization and
+                Architecture, Applied Regression Analysis, Statistical Consulting, Intro to Data Science, Linear Algebra <br>
+
+                <strong>Non-technical Courses:</strong> Cultures of Dance, The Art of Storytelling, American Cinemas in the 1970s, California Art and Visual Culture, 
+                Introduction to Buddhism, Sound &amp; Music in New Media, Arts of Oral Presentation
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Graduate Student Teaching Assistant, Northeastern University</h4>
+
+              <span>2024 — Present</span>
+
+              <p class="timeline-text">
+                • Engage in facilitating graduate-level course “Algorithms and Data Structure” with C language. <br>
+                • Serve as a mentor for the use of GitHub Copilot, providing guidance on its features and best practices. <br>
+                • Responsible for assessing and reviewing coding assignments and projects.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Software Developer / Data Engineer, ICF</h4>
+
+              <span>2020 — 2023</span>
+
+              <p class="timeline-text">
+                • Led the data aspect of a team with 12 core members, developing predictive analytics solution leveraging Tableau for
+                  workload forecasting that provided actionable insights for a large client, delivering $50K in annual savings.<br>
+                • Provided mentorship to junior software developers through building targeted training programs and resources that
+                  ensured their success in their individual roles.<br>
+                • Earned two promotions in less than 3 years, earned consistent recognition including “Most Valuable Person” awards.<br>
+                • Developed user-centric Salesforce applications, progressing from pilot to full-scale program with a 12-member team,
+                  securing employment for thousands of service members and establishing partnerships with 50 organizations.<br>
+                • Completed a full website overhaul in one week, saving two months of planned work and the need for
+                  three senior developers.<br>
+                • Managed data for the National Directory of New Hires (NDNH) by gathering, mining, cleaning, pre-processing, and 
+                restructuring data models to meet strict structures and codifications. Documented automation and manual tasks as 
+                part of data codification processes for future integration with government databases. <br>
+                • Led a hands-on machine learning project, handling data cleanup, feature selection, and model comparison. Presented the
+                  project to the data science team, showcasing classic ML methodologies in action.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Digital Humanities Associate, Information Technology Service, Carleton College</h4>
+
+              <span>2019 — 2020</span>
+
+              <p class="timeline-text">
+                • Engineered NLP language models in R for Sentiment Analysis and Topic Modeling, and developed Python scripts to clean metadata 
+                  for academic research. <br>
+                • Created terminal command line documentation for data visualization of English texts, enhancing research analysis capabilities. <br>
+                • Provided Teaching Assistant support in humanities, guiding students on digital project tools including ArcGIS, Voyant, and GitHub, 
+                  and offered specialized office hours for technical assistance.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Research Assistant, Carleton College</h4>
+
+              <span>2017 — 2018</span>
+
+              <p class="timeline-text">
+                • Successfully upgraded Carleton College's writing portfolio from hard copies to a digital database using OnBase Software <br>
+                • Utilized advanced knowledge of OnBase Software to design and develop a comprehensive training manual for future research 
+                  assistants as a reference guide
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+      <section class="skill">
+        <div class="title-wrapper">
+          <div class="icon-box">
+            <ion-icon name="build-outline"></ion-icon>
+          </div>
+
+          <h3 class="h3">Skills</h3>
+        </div>
+
+        <ul class="skills-list content-card">
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Domains</h5>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5" > 
+                Software Development |
+                Cloud Computing | 
+                Computer Vision | 
+                Machine Learning |
+                Natural Language Processing |
+                Data Mining |
+                Data Visualization |
+                Predictive Modeling |
+                Statistical Analysis</h5>
+            </div>
+          </li>
+
+        </ul>
+
+        <br>
+
+        <ul class="skills-list content-card">
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Languages &amp; Libraries </h5>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5" > 
+                Python | R | Java | C++ | JavaScript |
+                Scikit-learn | Keras | Pandas | NumPy | TensorFlow | NLTK | MatPlotlib | PyTorch | OpenCV (C++) </h5>
+            </div>
+          </li>
+
+        </ul>
+
+        <br>
+
+        <ul class="skills-list content-card">
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Certifications</h5>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5" >Neural Networks and Deep Learning | Machine Learning with Python |
+                IBM Data Science Professional Certificate | Salesforce Certified Platform Developer 2</h5>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Tenzin Kunsang" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Tenzin Kunsang</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  a secret space for fun.  
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </section>
+      </article>
+
+      <!--
+        - #PROJECT
+      -->
+      <article class="projects" data-page="projects">
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="timeline">
+
+          <!-- <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="logo-ionic" size="large"></ion-icon>
+            </div>
+          </div> -->
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Calibration and Augmented Reality</h4>
+        
+              <span>March 2024</span>
+
+              <p class="timeline-text">
+                Leveraged C++ and OpenCV to create an augmented reality system capable of recognizing targets in live video feeds 
+                to superimpose virtual objects that move in sync with real world. Used spatial data analysis to identify and 
+                visualize 3D points on objects within calibration-targeted scenes. 
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Real-time Object Recognition System, Deep Learning and PCA Embeddings</h4>
+
+              <span>February 2024</span>
+
+              <p class="timeline-text">
+                Created an advanced object recognition system in C++ using OpenCV, capable of live video stream analysis.
+                Implemented a processing pipeline for dynamic thresholding, image cleanup, and segmentation. Integrated deep
+                learning for feature extraction and PCA for efficient classification.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Stage, Android Development</h4>
+
+              <span>December 2023</span>
+
+              <p class="timeline-text">
+                Developed a mobile application called STAGE, a social platform for music lovers, 
+                integrating Spotify API and Firebase for a dynamic user experience. 
+
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Find a home, K-Nearest Neighbors Clustering</h4>
+
+              <span>September 2020</span>
+
+              <p class="timeline-text">
+                Developed a home clustering system by web scraping with BeautifulSoup, FourSquare API, and Apify to gather
+                Minneapolis neighborhood data, subsequently performing data integration and applying K-Nearest Neighbors for
+                insightful home and venue correlations.
+
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Stock Predictor, LSTM Neural Networks</h4>
+
+              <span>December 2019</span>
+
+              <p class="timeline-text">
+                Developed an LSTM Neural Network model for stock price prediction using Yahoo Finance data, optimizing
+                through cross-validation and back testing on major companies like Apple, Amazon, and Google to determine the
+                ideal architecture.
+
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+      </article>
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Finance</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Orizon</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Fundo</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Brawlhalla</h3>
+
+                <p class="project-category">Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">DSM.</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">MetaSpark</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Summary</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Task Manager</h3>
+
+                <p class="project-category">Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Arrival</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
+
+                  <p class="blog-text">
+                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+
+                  <p class="blog-text">
+                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                  <p class="blog-text">
+                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <!-- <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article> -->
+
     </div>
-    
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  </body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>
