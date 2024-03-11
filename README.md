@@ -1,19 +1,9 @@
 <div align="center">
 
-# vCard - Personal portfolio
+## [Personal Portfolio](https://tenzin-kunsang648.github.io/resume/)
 
-vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
+This Github Portfolio was created via https://github.com/codingstella/vCard-personal-portfolio/tree/main
 
- <a href="https://codingstella.github.io/vCard-personal-portfolio/"><strong>➥ Live Demo</strong></a> 
+"vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript."
  
  </div>
- 
-## Demo
-
-![vCard Desktop Demo](./website-demo-image/desktop.png "Desktop Demo")
-![vCard Mobile Demo](./website-demo-image/mobile.png "Mobile Demo")
-
-
-## License
-
-This project is **free to use** and does not contains any license.
