@@ -13,16 +13,777 @@
   <link rel="shortcut icon" href="./assets/images/tk.JPEG" type="image/x-icon">
 
   <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --orange-yellow-crayola: hsl(45, 100%, 72%);
+      --vegas-gold: hsl(45, 54%, 58%);
+      --light-gray: hsl(0, 0%, 84%);
+      --light-gray-70: hsla(0, 0%, 84%, 0.7);
+      --bittersweet-shimmer: hsl(0, 43%, 51%);
+      --dark-purple: hsl(262, 83%, 58%);
+      --onyx: hsl(240, 1%, 17%);
+      --eerie-black-1: hsl(240, 2%, 13%);
+      --eerie-black-2: hsl(240, 2%, 12%);
+      --smoky-black: hsl(0, 0%, 7%);
+      --white-1: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --jet: hsl(0, 0%, 22%);
+      --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+      --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.45);
+      --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+      --gradient-1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
+      --gradient-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
+      --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+      --ff-poppins: 'Poppins', sans-serif;
+      --fs-1: 24px;
+      --fs-2: 18px;
+      --fs-3: 17px;
+      --fs-4: 16px;
+      --fs-5: 15px;
+      --fs-6: 14px;
+      --fs-7: 13px;
+      --fs-8: 11px;
+      --fw-300: 300;
+      --fw-400: 400;
+      --fw-500: 500;
+      --fw-600: 600;
+      --section-padding: 60px;
+      --radius-12: 12px;
+      --radius-14: 14px;
+      --radius-18: 18px;
+      --radius-24: 24px;
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease-in-out;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--smoky-black);
+      color: var(--white-2);
+      font-family: var(--ff-poppins);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-400);
+    }
+
+    main {
+      margin: 15px 12px;
+      margin-bottom: 75px;
+      min-width: 259px;
+    }
+
+    .sidebar {
+      margin-bottom: 15px;
+      max-height: 112px;
+      overflow: hidden;
+      transition: var(--transition-2);
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-20);
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+    }
+
+    .sidebar.active { max-height: 405px; }
+
+    .sidebar-info {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .avatar-box {
+      background: var(--bg-gradient-onyx);
+      border-radius: var(--radius-20);
+    }
+
+    .info-content .name {
+      color: var(--white-2);
+      font-size: var(--fs-3);
+      font-weight: var(--fw-500);
+      letter-spacing: -0.25px;
+      margin-bottom: 10px;
+    }
+
+    .info-content .title {
+      color: var(--white-1);
+      background: var(--onyx);
+      font-size: var(--fs-8);
+      font-weight: var(--fw-300);
+      width: max-content;
+      padding: 3px 12px;
+      border-radius: var(--radius-8);
+    }
+
+    .info_more-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      border-radius: var(--radius-8);
+      font-size: var(--fs-8);
+      color: var(--orange-yellow-crayola);
+      background: var(--border-gradient-onyx);
+      padding: 10px;
+      box-shadow: var(--shadow-2);
+      transition: var(--transition-1);
+      z-index: 1;
+      border: none;
+      cursor: pointer;
+    }
+
+    .info_more-btn:hover, .info_more-btn:focus { background: var(--bg-gradient-yellow); }
+
+    .sidebar-info_more {
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-2);
+    }
+
+    .sidebar.active .sidebar-info_more {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--jet);
+      margin: 16px 0;
+    }
+
+    .contacts-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .contact-item {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-info {
+      max-width: calc(100% - 46px);
+      width: calc(100% - 46px);
+    }
+
+    .contact-title {
+      color: var(--light-gray-70);
+      font-size: var(--fs-8);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .contact-link {
+      color: var(--white-2);
+      font-size: var(--fs-7);
+      text-decoration: none;
+    }
+
+    .contact-link:hover { color: var(--orange-yellow-crayola); }
+
+    .social-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+      padding-left: 7px;
+      list-style: none;
+    }
+
+    .social-link {
+      color: var(--light-gray-70);
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .social-link:hover { color: var(--orange-yellow-crayola); }
+
+    .main-content {
+      position: relative;
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-20);
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .navbar {
+      background: hsla(0, 0%, 0%, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-12);
+      box-shadow: var(--shadow-2);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 10px;
+      z-index: 5;
+    }
+
+    .navbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      list-style: none;
+    }
+
+    .navbar-link {
+      color: var(--light-gray);
+      font-size: var(--fs-8);
+      padding: 20px 7px;
+      transition: color var(--transition-1);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .navbar-link:hover,
+    .navbar-link:focus { color: var(--light-gray-70); }
+
+    .navbar-link.active { color: var(--orange-yellow-crayola); }
+
+    article {
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-20);
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    article.active {
+      display: block;
+      animation: fade 0.5s ease backwards;
+    }
+
+    article:not(.active) { display: none; }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .h2, .h3, .h4, .h5 {
+      color: var(--white-2);
+      text-transform: capitalize;
+    }
+
+    .h2 { font-size: var(--fs-1); }
+    .h3 { font-size: var(--fs-2); }
+    .h4 { font-size: var(--fs-4); }
+    .h5 { font-size: var(--fs-7); letter-spacing: 2px; }
+
+    .article-title {
+      position: relative;
+      padding-bottom: 7px;
+      margin-bottom: 30px;
+    }
+
+    .article-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--text-gradient-yellow);
+      border-radius: 3px;
+    }
+
+    .icon-box {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: var(--orange-yellow-crayola);
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .icon-box::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--eerie-black-1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .icon-box ion-icon { --ionicon-stroke-width: 35px; }
+
+    .about-text {
+      color: var(--light-gray);
+      font-weight: var(--fw-300);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+    }
+
+    .timeline {
+      margin-bottom: 30px;
+    }
+
+    .timeline .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .timeline-list {
+      font-size: var(--fs-6);
+      margin-left: 45px;
+      list-style: none;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    .timeline-item-title {
+      font-size: var(--fs-6);
+      line-height: 1.3;
+      margin-bottom: 7px;
+    }
+
+    .timeline-text {
+      color: var(--light-gray);
+      font-weight: var(--fw-300);
+      line-height: 1.6;
+    }
+
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: -30px;
+      width: 1px;
+      height: calc(100% + 50px);
+      background: var(--jet);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: -33px;
+      height: 6px;
+      width: 6px;
+      background: var(--text-gradient-yellow);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--jet);
+    }
+
+    .skills-list {
+      padding: 20px;
+      list-style: none;
+    }
+
+    .content-card {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      padding: 15px;
+      border-radius: var(--radius-14);
+      box-shadow: var(--shadow-2);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .content-card::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--bg-gradient-jet);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 10px;
+      list-style: none;
+    }
+
+    .project-item {
+      display: none;
+    }
+
+    .project-item.active {
+      display: block;
+      animation: scaleUp 0.25s ease forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); }
+      100% { transform: scale(1); }
+    }
+
+    .project-img {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-16);
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .project-img::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .project-item:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+
+    .project-item-icon-box {
+      --scale: 0.8;
+      background: var(--bg-gradient-yellow);
+      color: var(--orange-yellow-crayola);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(var(--scale));
+      font-size: 20px;
+      padding: 18px;
+      border-radius: var(--radius-12);
+      opacity: 0;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .project-item:hover .project-item-icon-box {
+      --scale: 1;
+      opacity: 1;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-1);
+    }
+
+    .project-item:hover .project-img img { transform: scale(1.1); }
+
+    .project-title,
+    .project-category {
+      margin-left: 10px;
+    }
+
+    .project-title {
+      color: var(--white-2);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-400);
+      text-transform: capitalize;
+      line-height: 1.3;
+    }
+
+    .project-category {
+      color: var(--light-gray-70);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      margin-top: 3px;
+    }
+
+    .filter-list {
+      display: none;
+    }
+
+    .filter-select-box {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .filter-select {
+      background: var(--eerie-black-2);
+      color: var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-14);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      cursor: pointer;
+    }
+
+    .filter-select.active .select-icon { transform: rotate(0.5turn); }
+
+    .select-list {
+      background: var(--eerie-black-2);
+      position: absolute;
+      top: calc(100% + 6px);
+      width: 100%;
+      padding: 6px;
+      border: 1px solid var(--jet);
+      border-radius: var(--radius-14);
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.15s ease-in-out;
+      list-style: none;
+    }
+
+    .filter-select.active + .select-list {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .select-item button {
+      background: var(--eerie-black-2);
+      color: var(--light-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      text-transform: capitalize;
+      width: 100%;
+      padding: 8px 10px;
+      border: none;
+      border-radius: var(--radius-8);
+      cursor: pointer;
+      transition: var(--transition-1);
+    }
+
+    .select-item button:hover { --eerie-black-2: hsl(240, 2%, 20%); }
+
+    .blog-posts-list {
+      list-style: none;
+    }
+
+    .blog-post-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--jet);
+    }
+
+    .blog-post-item:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .blog-banner-box {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .blog-banner-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-1);
+    }
+
+    .blog-content {
+      padding: 15px;
+    }
+
+    .blog-text {
+      color: var(--light-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      line-height: 1.6;
+    }
+
+    /* New styles for enhanced sections */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .interest-card {
+      background: var(--border-gradient-onyx);
+      border-radius: var(--radius-14);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interest-card::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--eerie-black-1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .interest-card h4 {
+      color: var(--orange-yellow-crayola);
+      margin-bottom: 15px;
+    }
+
+    .book-item, .movie-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: var(--jet);
+      border-radius: var(--radius-8);
+    }
+
+    .book-item:last-child, .movie-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .book-cover, .movie-poster {
+      width: 50px;
+      height: 70px;
+      border-radius: var(--radius-8);
+      object-fit: cover;
+      background: var(--onyx);
+    }
+
+    .book-info, .movie-info {
+      flex: 1;
+    }
+
+    .book-title, .movie-title {
+      color: var(--white-2);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      margin-bottom: 3px;
+    }
+
+    .book-author, .movie-director {
+      color: var(--light-gray-70);
+      font-size: var(--fs-7);
+    }
+
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .tech-tag {
+      background: var(--onyx);
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-8);
+      padding: 3px 8px;
+      border-radius: var(--radius-8);
+    }
+
+    /* Responsive */
+    @media (min-width: 580px) {
+      main { margin: 60px auto; max-width: 950px; }
+      .sidebar { margin-bottom: 60px; max-height: 180px; }
+      .sidebar.active { max-height: 584px; }
+      .sidebar-info { gap: 25px; }
+      .avatar-box { border-radius: var(--radius-25); }
+      .info-content .name { margin-bottom: 15px; }
+      .navbar { border-radius: var(--radius-20); }
+      .navbar-list { gap: 20px; padding: 0 20px; }
+      .navbar-link { --fs-8: 14px; }
+      .interests-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    }
+
+    @media (min-width: 768px) {
+      main { display: grid; grid-template-columns: 1fr 3fr; gap: 25px; }
+      .sidebar {
+        position: sticky;
+        top: 60px;
+        margin-bottom: 0;
+        max-height: max-content;
+      }
+      .sidebar.active { max-height: max-content; }
+      .info_more-btn { display: none; }
+      .sidebar-info_more {
+        opacity: 1;
+        visibility: visible;
+      }
+      .contacts-list { grid-template-columns: 1fr; }
+      .contact-info :is(.contact-link) { white-space: nowrap; }
+      .navbar {
+        position: absolute;
+        bottom: auto;
+        top: 0;
+        left: auto;
+        right: 0;
+        width: max-content;
+        border-radius: 0 20px;
+        padding: 0 20px;
+        box-shadow: none;
+      }
+      .navbar-list {
+        gap: 30px;
+        padding: 0 20px;
+      }
+      .navbar-link { font-weight: var(--fw-500); }
+      .project-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .project-list { grid-template-columns: repeat(3, 1fr); }
+      .interests-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1250px) {
+      body::-webkit-scrollbar { width: 20px; }
+      body::-webkit-scrollbar-track { background: var(--smoky-black); }
+      body::-webkit-scrollbar-thumb {
+        border: 5px solid var(--smoky-black);
+        background: hsla(0, 0%, 100%, 0.1);
+        border-radius: 20px;
+        box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+                    inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+      }
+      body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+      body::-webkit-scrollbar-button { height: 60px; }
+      main { max-width: 1200px; }
+      .sidebar { max-width: 300px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -48,7 +809,7 @@
         <div class="info-content">
           <h1 class="name" title="Tenzin Kunsang">Tenzin Kunsang</h1>
 
-          <p class="title">"I’m nobody! Who are you?" <br> Emily Dickinson</p>
+          <p class="title">"I'm nobody! Who are you?" <br> Emily Dickinson</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -115,19 +876,19 @@
 
           <li class="social-item">
             <a href="https://github.com/tenzin-kunsang648" class="social-link">
-              <ion-icon class = "socials-icons" name="logo-github"></ion-icon>
+              <ion-icon class="socials-icons" name="logo-github"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://www.linkedin.com/in/tenzin-kunsang648/" class="social-link">
-              <ion-icon class = "socials-icons" name="logo-linkedin"></ion-icon>
+              <ion-icon class="socials-icons" name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
             <a href="https://www.instagram.com/lifeasitseemsinpictures/" class="social-link">
-              <ion-icon class = "socials-icons" name="logo-instagram"></ion-icon>
+              <ion-icon class="socials-icons" name="logo-instagram"></ion-icon>
             </a>
           </li>
 
@@ -136,10 +897,6 @@
       </div>
 
     </aside>
-
-
-
-
 
     <!--
       - #main-content
@@ -167,25 +924,17 @@
             <button class="navbar-link" data-nav-link>Projects</button>
           </li>
 
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li> -->
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Interests</button>
+          </li>
 
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li>
 
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>  -->
-
         </ul>
 
       </nav>
-
-
-
-
 
       <!--
         - #ABOUT
@@ -198,69 +947,38 @@
         </header>
 
         <section class="about-text">
+          <p>
+            Just finished my Master's in Computer Science at Northeastern, 
+            specializing in AI & Data Science. My path here wasn't straight: 
+            mathematics at a small liberal arts college, then moving into software development 
+            after graduation, and eventually finding my way to machine learning. 
+            Along the way, I've worked across domains from large-scale enterprise data platforms 
+            to medical imaging systems. Each turn was necessary and reinforced my commitment 
+            to developing technology that amplifies human potential.
+          </p>
 
           <p>
-            I’m currently working on my master’s in computer science, focusing on AI and Data Science. 
-            I mix my skills in math, software dev, and data engineering to explore computer vision, 
-            machine learning, and natural language processing. With three years of experience as a 
-            full-stack developer, I’ve tackled data-driven projects, connected complex databases to 
-            user-friendly interfaces, and used statistical analysis and ML to fine-tune data and support 
-            decision-making. I’ve also done a lot of technical writing for stakeholders and architects.
+            My work spans computer vision, machine learning, and data engineering, but what drives me is the 
+            conviction that our tools should make us more thoughtful, not less. They should make us more 
+            connected to each other and to the work that matters most. In my community work with 
+            Tibetan organizations, in the classroom as a teaching assistant, and in the code I write, 
+            I'm always asking: How can we build technologies that honor the dignity and innate gifts of every person?
+          </p>
+
+          <p>
+            I'm particularly fascinated by the questions that don't have clean answers yet: 
+            How do we create AI systems that enhance rather than replace human judgment? 
+            What does it mean to build ethical technology in a world of rapid change? 
+            How do we ensure the benefits of these powerful tools reach the communities that need them most?
           </p>
           
           <p>
-            On the side, I’ve mentored junior developers, shared my coding knowledge, and volunteered to 
-            teach high-school math to help out the Tibetan community through Yindayin. As a secretary 
-            for the Regional Tibetan Women’s Association in Minneapolis, I’ve used my organizational 
-            and design skills to help fund scholarships for bright Tibetan students. I’m all about using data and 
-            intuition to keep learning and making a positive impact in our communities.
+            Currently exploring opportunities where I can continue this work: developing AI that 
+            serves human flourishing, contributing to research that expands our understanding of 
+            intelligence and perception, and building systems that make complex problems more tractable 
+            for the people trying to solve them.
           </p>
-
-<!--           <p>
-            During my leisure hours, I enjoy devling into my internal world through writing poems and proses, 
-            reading books, practicing yoga, and listening to music. I also enjoy hiking, spending time with 
-            my friends and family, exploring new places in familiar surroundings, and watching films —both the 
-            masterpieces and the not-so-great ones, especially when I'm in the mood for something less mentally taxing. 
-            These days, I am drawn to films that embrace the silence
-            and feelings and slowness similar to "The Banshees of Inisherin", "Frances Ha", and "Past Lives". 
-          </p> -->
         </section>
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Tenzin Kunsang" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Tenzin Kunsang</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  a secret space for fun.  
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
 
       </article>
 
@@ -290,14 +1008,14 @@
 
               <h4 class="h4 timeline-item-title">Northeastern University</h4>
               <p class="timeline-degree-info">
-                Candidate for a Master's Degree in Computer Science, Concentration : AI and Data Science <br>
+                Master of Science in Computer Science, Specialization in AI & Data Science <br>
                 GPA: 4.0/4.0
               </p>
 
               <span>2023 — 2025</span>
 
               <p class="timeline-text">
-                Courses: Pattern Recognition and Computer Vision, Algorithms, Unsupervised Machine Learning, Mobile Application Development
+                Courses: Advanced Perception, Pattern Recognition & Computer Vision, Algorithms, Deep Learning, Machine Learning, Unsupervised Machine Learning, Mobile Application Development
               </p>
 
             </li>
@@ -315,7 +1033,7 @@
                 Architecture, Applied Regression Analysis, Statistical Consulting, Intro to Data Science, Linear Algebra <br>
 
                 <strong>Non-technical Courses:</strong> Cultures of Dance, The Art of Storytelling, American Cinemas in the 1970s, California Art and Visual Culture, 
-                Introduction to Buddhism, Sound &amp; Music in New Media, Arts of Oral Presentation
+                Introduction to Buddhism, Sound & Music in New Media, Arts of Oral Presentation
               </p>
 
             </li>
@@ -328,7 +1046,7 @@
 
           <div class="title-wrapper">
             <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+              <ion-icon name="briefcase-outline"></ion-icon>
             </div>
 
             <h3 class="h3">Experience</h3>
@@ -338,69 +1056,46 @@
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Graduate Student Teaching Assistant, Northeastern University</h4>
+              <h4 class="h4 timeline-item-title">Machine Learning Engineer in Medical Image Processing</h4>
+              <p>Transmural Systems | Andover, MA</p>
 
-              <span>2024 — Present</span>
+              <span>July 2024 — December 2024</span>
 
               <p class="timeline-text">
-                • Engage in facilitating graduate-level course “Algorithms and Data Structure” with C language. <br>
-                • Serve as a mentor for the use of GitHub Copilot, providing guidance on its features and best practices. <br>
-                • Responsible for assessing and reviewing coding assignments and projects.
+                • Developed real-time detection and tracking pipelines for needles and blinking markers on custom medical devices for MRI-guided cardiac procedures<br>
+                • Implemented and optimized CV algorithms using Frangi filters, Kalman tracking, KAZE features, and kernel interpolation techniques<br>
+                • Collaborated with specialists at Brigham and Women's Hospital to refine device-specific detection models based on clinical feedback<br>
+                • Benchmarked classical CV methods against fine-tuned YOLO networks on phantom images
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Software Developer / Data Engineer, ICF</h4>
+              <h4 class="h4 timeline-item-title">Graduate Student Teaching Assistant</h4>
+              <p>Northeastern University | Boston, MA</p>
 
-              <span>2020 — 2023</span>
+              <span>January 2024 — Present</span>
 
               <p class="timeline-text">
-                • Led the data aspect of a team with 12 core members, developing predictive analytics solution leveraging Tableau for
-                  workload forecasting that provided actionable insights for a large client, delivering $50K in annual savings.<br>
-                • Provided mentorship to junior software developers through building targeted training programs and resources that
-                  ensured their success in their individual roles.<br>
-                • Earned two promotions in less than 3 years, earned consistent recognition including “Most Valuable Person” awards.<br>
-                • Developed user-centric Salesforce applications, progressing from pilot to full-scale program with a 12-member team,
-                  securing employment for thousands of service members and establishing partnerships with 50 organizations.<br>
-                • Completed a full website overhaul in one week, saving two months of planned work and the need for
-                  three senior developers.<br>
-                • Managed data for the National Directory of New Hires (NDNH) by gathering, mining, cleaning, pre-processing, and 
-                restructuring data models to meet strict structures and codifications. Documented automation and manual tasks as 
-                part of data codification processes for future integration with government databases. <br>
-                • Led a hands-on machine learning project, handling data cleanup, feature selection, and model comparison. Presented the
-                  project to the data science team, showcasing classic ML methodologies in action.
+                • Pattern Recognition & Computer Vision - Provided mentorship on OpenCV and C++ technical concepts including image feature extraction, morphological operations, and AR/VR<br>
+                • Algorithms & Data Structures - Mentored students on Git, GitHub, CoPilot, Python, C, dynamic programming, and graph algorithms
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Digital Humanities Associate, Information Technology Service, Carleton College</h4>
+              <h4 class="h4 timeline-item-title">Software Developer / Lead Data Engineer</h4>
+              <p>ICF | Reston, VA</p>
 
-              <span>2019 — 2020</span>
-
-              <p class="timeline-text">
-                • Engineered NLP language models in R for Sentiment Analysis and Topic Modeling, and developed Python scripts to clean metadata 
-                  for academic research. <br>
-                • Created terminal command line documentation for data visualization of English texts, enhancing research analysis capabilities. <br>
-                • Provided Teaching Assistant support in humanities, guiding students on digital project tools including ArcGIS, Voyant, and GitHub, 
-                  and offered specialized office hours for technical assistance.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Research Assistant, Carleton College</h4>
-
-              <span>2017 — 2018</span>
+              <span>July 2020 — July 2023</span>
 
               <p class="timeline-text">
-                • Successfully upgraded Carleton College's writing portfolio from hard copies to a digital database using OnBase Software <br>
-                • Utilized advanced knowledge of OnBase Software to design and develop a comprehensive training manual for future research 
-                  assistants as a reference guide
+                • Led pioneering integration of employment data across DoD, DOL, and NDNH federal systems, creating the first comprehensive dataset that tracked veterans' complete employment journey<br>
+                • Built Tableau predictive analytics and survey integration tools that showcased program impact, securing continued funding<br>
+                • Developed web portals and Salesforce applications that improved employment outcomes for 200,000+ transitioning service members<br>
+                • Mentored junior developers by creating training materials and providing technical guidance
               </p>
 
             </li>
@@ -409,120 +1104,59 @@
 
         </section>
 
-      <section class="skill">
-        <div class="title-wrapper">
-          <div class="icon-box">
-            <ion-icon name="build-outline"></ion-icon>
+        <section class="skill">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="build-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Skills</h3>
           </div>
 
-          <h3 class="h3">Skills</h3>
-        </div>
+          <ul class="skills-list content-card">
 
-        <ul class="skills-list content-card">
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Domains</h5>
-            </div>
-          </li>
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 class="h5" > 
-                Software Development |
-                Cloud Computing | 
-                Computer Vision | 
-                Machine Learning |
-                Natural Language Processing |
-                Data Mining |
-                Data Visualization |
-                Predictive Modeling |
-                Statistical Analysis</h5>
-            </div>
-          </li>
-
-        </ul>
-
-        <br>
-
-        <ul class="skills-list content-card">
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Languages &amp; Libraries </h5>
-            </div>
-          </li>
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 class="h5" > 
-                Python | R | Java | C++ | JavaScript |
-                Scikit-learn | Keras | Pandas | NumPy | TensorFlow | NLTK | MatPlotlib | PyTorch | OpenCV (C++) </h5>
-            </div>
-          </li>
-
-        </ul>
-
-        <br>
-
-        <ul class="skills-list content-card">
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 style="color:hsl(35, 100%, 68%);" class="h4">Certifications</h5>
-            </div>
-          </li>
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 class="h5" >Neural Networks and Deep Learning | Machine Learning with Python |
-                IBM Data Science Professional Certificate | Salesforce Certified Platform Developer 2</h5>
-            </div>
-          </li>
-
-        </ul>
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Tenzin Kunsang" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Tenzin Kunsang</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  a secret space for fun.  
-                </p>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 style="color:hsl(35, 100%, 68%);" class="h4">Domains</h5>
               </div>
+            </li>
 
-            </div>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5"> 
+                  Computer Vision | Machine Learning | Deep Learning | Data Engineering | Medical Image Processing | Natural Language Processing | Statistical Analysis | Predictive Modeling
+                </h5>
+              </div>
+            </li>
 
-          </section>
+          </ul>
 
-        </div>
+          <br>
 
-      </section>
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 style="color:hsl(35, 100%, 68%);" class="h4">Languages & Libraries</h5>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5"> 
+                  Python | C++ | Java | R | SQL | JavaScript | PyTorch | TensorFlow | OpenCV | Scikit-learn | Pandas | NumPy | Matplotlib | NLTK | Git
+                </h5>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
       </article>
 
       <!--
-        - #PROJECT
+        - #PROJECTS
       -->
       <article class="projects" data-page="projects">
 
@@ -530,338 +1164,332 @@
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <section class="timeline">
+        <section class="projects">
 
-          <!-- <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="logo-ionic" size="large"></ion-icon>
-            </div>
-          </div> -->
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-select-value>Select category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
 
-          <ol class="timeline-list">
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Computer Vision</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Machine Learning</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Mobile Development</button>
+              </li>
+            </ul>
+          </div>
 
-            <li class="timeline-item">
+          <ul class="project-list">
 
-              <h4 class="h4 timeline-item-title">Calibration and Augmented Reality</h4>
-        
-              <span>March 2024</span>
+            <li class="project-item active" data-filter-item data-category="computer vision">
+              <a href="https://github.com/tenzin-kunsang648/referring-image-segmentation" target="_blank">
 
-              <p class="timeline-text">
-                Leveraged C++ and OpenCV to create an augmented reality system capable of recognizing targets in live video feeds 
-                to superimpose virtual objects that move in sync with real world. Used spatial data analysis to identify and 
-                visualize 3D points on objects within calibration-targeted scenes. 
-              </p>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
 
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Referring Image Segmentation" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Referring Image Segmentation</h3>
+                <p class="project-category">Computer Vision</p>
+                <p class="timeline-text">Parameter-efficient fine-tuning model combining Dense Adapters with state space models and Transformer architecture, updating only 5.8% of backbone parameters.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">Transformers</span>
+                  <span class="tech-tag">Computer Vision</span>
+                </div>
+
+              </a>
             </li>
 
-            <li class="timeline-item">
+            <li class="project-item active" data-filter-item data-category="computer vision">
+              <a href="https://github.com/tenzin-kunsang648/depth-estimation" target="_blank">
 
-              <h4 class="h4 timeline-item-title">Real-time Object Recognition System, Deep Learning and PCA Embeddings</h4>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="layers-outline"></ion-icon>
+                  </div>
 
-              <span>February 2024</span>
+                  <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop" alt="Depth Estimation" loading="lazy">
+                </figure>
 
-              <p class="timeline-text">
-                Created an advanced object recognition system in C++ using OpenCV, capable of live video stream analysis.
-                Implemented a processing pipeline for dynamic thresholding, image cleanup, and segmentation. Integrated deep
-                learning for feature extraction and PCA for efficient classification.
-              </p>
+                <h3 class="project-title">Depth Estimation for Indoor Scenes</h3>
+                <p class="project-category">Computer Vision</p>
+                <p class="timeline-text">Lightweight semi-supervised adaptation of the Depth Anything framework using teacher-student approach with data augmentations for indoor scenes.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">Semi-supervised Learning</span>
+                  <span class="tech-tag">Depth Estimation</span>
+                </div>
 
+              </a>
             </li>
 
-            <li class="timeline-item">
+            <li class="project-item active" data-filter-item data-category="computer vision">
+              <a href="https://github.com/tenzin-kunsang648/augmented-reality-opencv" target="_blank">
 
-              <h4 class="h4 timeline-item-title">Stage, Android Development</h4>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="cube-outline"></ion-icon>
+                  </div>
 
-              <span>December 2023</span>
+                  <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc696?w=400&h=300&fit=crop" alt="AR System" loading="lazy">
+                </figure>
 
-              <p class="timeline-text">
-                Developed a mobile application called STAGE, a social platform for music lovers, 
-                integrating Spotify API and Firebase for a dynamic user experience. 
+                <h3 class="project-title">Calibration and Augmented Reality</h3>
+                <p class="project-category">Computer Vision</p>
+                <p class="timeline-text">C++ and OpenCV augmented reality system capable of recognizing targets in live video feeds to superimpose virtual objects that move in sync with real world.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">OpenCV</span>
+                  <span class="tech-tag">Augmented Reality</span>
+                </div>
 
-              </p>
-
+              </a>
             </li>
 
-            <li class="timeline-item">
+            <li class="project-item active" data-filter-item data-category="computer vision">
+              <a href="https://github.com/tenzin-kunsang648/object-recognition-system" target="_blank">
 
-              <h4 class="h4 timeline-item-title">Find a home, K-Nearest Neighbors Clustering</h4>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="scan-outline"></ion-icon>
+                  </div>
 
-              <span>September 2020</span>
+                  <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&h=300&fit=crop" alt="Object Recognition" loading="lazy">
+                </figure>
 
-              <p class="timeline-text">
-                Developed a home clustering system by web scraping with BeautifulSoup, FourSquare API, 
-                and Apify to gather Minneapolis neighborhood data, subsequently performing data 
-                integration and applying K-Nearest Neighbors for insightful home and venue correlations.
+                <h3 class="project-title">Real-time Object Recognition System</h3>
+                <p class="project-category">Computer Vision</p>
+                <p class="timeline-text">Advanced object recognition system in C++ using OpenCV, capable of live video stream analysis with deep learning for feature extraction and PCA for classification.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">OpenCV</span>
+                  <span class="tech-tag">Deep Learning</span>
+                  <span class="tech-tag">PCA</span>
+                </div>
 
-              </p>
-
+              </a>
             </li>
 
-            <li class="timeline-item">
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/tenzin-kunsang648/plant-trait-classification" target="_blank">
 
-              <h4 class="h4 timeline-item-title">Stock Predictor, LSTM Neural Networks</h4>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="leaf-outline"></ion-icon>
+                  </div>
 
-              <span>December 2019</span>
+                  <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop" alt="Plant Classification" loading="lazy">
+                </figure>
 
-              <p class="timeline-text">
-                Developed an LSTM Neural Network model for stock price prediction using Yahoo Finance data, optimizing
-                through cross-validation and back testing on major companies like Apple, Amazon, and Google to determine the
-                ideal architecture.
+                <h3 class="project-title">Plant Trait Classification</h3>
+                <p class="project-category">Machine Learning</p>
+                <p class="timeline-text">Multi-modal deep learning system combining ResNet50, InceptionV3, and EfficientNet to classify plant traits using text, numerical, and image data.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">PyTorch</span>
+                  <span class="tech-tag">Multi-modal</span>
+                  <span class="tech-tag">CNN</span>
+                </div>
 
-              </p>
-
+              </a>
             </li>
 
-          </ol>
+            <li class="project-item active" data-filter-item data-category="mobile development">
+              <a href="https://github.com/tenzin-kunsang648/stage-music-app" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="musical-notes-outline"></ion-icon>
+                  </div>
+
+                  <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" alt="Stage App" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Stage - Social Music Platform</h3>
+                <p class="project-category">Mobile Development</p>
+                <p class="timeline-text">Android social platform for music lovers, integrating Spotify API and Firebase for dynamic user experience and music sharing.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Android</span>
+                  <span class="tech-tag">Spotify API</span>
+                  <span class="tech-tag">Firebase</span>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/tenzin-kunsang648/home-clustering" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="home-outline"></ion-icon>
+                  </div>
+
+                  <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop" alt="Home Clustering" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Find a Home - K-Nearest Neighbors</h3>
+                <p class="project-category">Machine Learning</p>
+                <p class="timeline-text">Home clustering system using web scraping, FourSquare API, and K-Nearest Neighbors for Minneapolis neighborhood analysis and venue correlations.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">K-NN</span>
+                  <span class="tech-tag">Web Scraping</span>
+                  <span class="tech-tag">APIs</span>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/tenzin-kunsang648/stock-predictor-lstm" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="trending-up-outline"></ion-icon>
+                  </div>
+
+                  <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=300&fit=crop" alt="Stock Predictor" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Stock Predictor - LSTM Neural Networks</h3>
+                <p class="project-category">Machine Learning</p>
+                <p class="timeline-text">LSTM Neural Network model for stock price prediction using Yahoo Finance data, optimized through cross-validation and backtesting on major companies.</p>
+                
+                <div class="project-tech-stack">
+                  <span class="tech-tag">TensorFlow</span>
+                  <span class="tech-tag">LSTM</span>
+                  <span class="tech-tag">Time Series</span>
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
 
         </section>
 
       </article>
 
-
-
-
       <!--
-        - #PORTFOLIO
+        - #INTERESTS
       -->
-
-      <article class="portfolio" data-page="portfolio">
+      <article class="interests" data-page="interests">
 
         <header>
-          <h2 class="h2 article-title">Portfolio</h2>
+          <h2 class="h2 article-title">Interests & Culture</h2>
         </header>
 
-        <section class="projects">
+        <div class="interests-grid">
 
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
+          <div class="interest-card">
+            <h4>Recent Favorite Books</h4>
+            
+            <div class="book-item">
+              <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+              <div class="book-info">
+                <div class="book-title">The Banshees of Inisherin</div>
+                <div class="book-author">Martin McDonagh</div>
               </div>
+            </div>
 
-            </button>
+            <div class="book-item">
+              <div class="book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+              <div class="book-info">
+                <div class="book-title">Klara and the Sun</div>
+                <div class="book-author">Kazuo Ishiguro</div>
+              </div>
+            </div>
 
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
+            <div class="book-item">
+              <div class="book-cover" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+              <div class="book-info">
+                <div class="book-title">The Seven Husbands of Evelyn Hugo</div>
+                <div class="book-author">Taylor Jenkins Reid</div>
+              </div>
+            </div>
 
           </div>
 
-          <ul class="project-list">
+          <div class="interest-card">
+            <h4>Recent Favorite Films</h4>
+            
+            <div class="movie-item">
+              <div class="movie-poster" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+              <div class="movie-info">
+                <div class="movie-title">Past Lives</div>
+                <div class="movie-director">Celine Sciamma</div>
+              </div>
+            </div>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+            <div class="movie-item">
+              <div class="movie-poster" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+              <div class="movie-info">
+                <div class="movie-title">Frances Ha</div>
+                <div class="movie-director">Noah Baumbach</div>
+              </div>
+            </div>
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+            <div class="movie-item">
+              <div class="movie-poster" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+              <div class="movie-info">
+                <div class="movie-title">The Banshees of Inisherin</div>
+                <div class="movie-director">Martin McDonagh</div>
+              </div>
+            </div>
 
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
-                </figure>
+          </div>
 
-                <h3 class="project-title">Finance</h3>
+          <div class="interest-card">
+            <h4>Personal Pursuits</h4>
+            <div class="timeline-text">
+              <p>During my leisure hours, I enjoy delving into my internal world through writing poems and prose, reading books, practicing yoga, and listening to music. I also enjoy hiking, spending time with friends and family, exploring new places in familiar surroundings, and watching films — both masterpieces and the not-so-great ones.</p>
+              
+              <p>These days, I'm drawn to films that embrace silence, feelings, and slowness similar to "The Banshees of Inisherin", "Frances Ha", and "Past Lives".</p>
 
-                <p class="project-category">Web development</p>
+              <p>I'm also actively involved in my community, serving as a secretary for the Regional Tibetan Women's Association in Minneapolis and volunteering with Yindayin to teach high-school math to Tibetan students.</p>
+            </div>
+          </div>
 
-              </a>
-            </li>
+          <div class="interest-card">
+            <h4>Current Focus</h4>
+            <div class="timeline-text">
+              <p><strong>Philosophy & Technology:</strong> Exploring how we can build AI systems that enhance rather than replace human judgment, and what ethical technology looks like in our rapidly changing world.</p>
+              
+              <p><strong>Community Impact:</strong> Using my technical skills to support the Tibetan community through educational initiatives and organizational work.</p>
+              
+              <p><strong>Research Interests:</strong> Computer vision applications in medical imaging, parameter-efficient fine-tuning of large models, and multimodal AI systems.</p>
+            </div>
+          </div>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+        </div>
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article> 
-
+      </article>
 
       <!--
         - #BLOG
       -->
-
       <article class="blog" data-page="blog">
 
         <header>
@@ -869,159 +1497,159 @@
         </header>
 
         <section class="blog-posts">
-          <!-- <figure class="blog-banner-box">
-            <img src="./assets/images/tk_maps.jpg" alt="maps" loading="lazy">
-          </figure>  -->
 
           <ul class="blog-posts-list">
 
             <li class="blog-post-item">
-              <!-- <a href="#"> -->
 
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/tk_bricks.png" alt="maps" loading="lazy">
-                </figure>
+              <figure class="blog-banner-box">
+                <img src="./assets/images/tk_bricks.png" alt="shades of birth" loading="lazy">
+              </figure>
 
-                <div class="blog-content">
+              <div class="blog-content">
 
-                  <div class="blog-meta">
-                    <!-- <p class="blog-category">Design</p> -->
+                <h4 style="color: white;">shades of birth 1</h4>
 
-                    <!-- <span class="dot"></span> -->
+                <p class="blog-text">
+                  A child was born; the story was told in black and white.<br>
+                  Narrators succumbed to their vision with blind eyes, <br>
+                  Their sharp breaths filled the voids in the darkness, <br>
+                  They were breathless and quiet, restless and calm.<br>
+                  I lied amidst the chaos and peace,<br>
+                  Feeling energies from perspired beings<br>
+                  Hearing the storytellers drag their bodies from one spot to another.<br>
+                  (The uninvited light -from a curtain often drawn between the story -was menacing)<br>
+                  Dancing tellers of the tale found their way to the fabric of my skin,<br>
+                  They twisted and slithered and elevated on the ground,<br>
+                  Enter Color.
+                </p>
 
-                    <!-- <time datetime="2022-02-23">Fab 23, 2022</time> -->
-                  </div>
+              </div>
 
-                  <!-- <h3 class="blog-item-title">a dance</h3> -->
-                    <h4 style="color: white;">shades of birth 1</h4>
-
-                  <p class="blog-text">
-                    A child was born; the story was told in black and white.<br>
-                    Narrators succumbed to their vision with blind eyes, <br>
-                    Their sharp breaths filled the voids in the darkness, <br>
-                    They were breathless and quiet, restless and calm.<br>
-                    Ilied amidst the chaos and peace,<br>
-                    Feeling energies from perspired beings<br>
-                    Hearing the storytellers drag their bodies from one spot to another.<br>
-                    (The uninvited light -from a curtain often drawn between the story -was menacing)<br>
-                    Dancing tellers of the tale found their way to the fabric of my skin,<br>
-                    They twisted and slithered and elevated on the ground,<br>
-                    Enter Color.
-                  </p>
-
-                </div>
-
-              </a>
             </li>
 
             <li class="blog-post-item">
-              <!-- <a href="#"> -->
 
-                <!-- <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure> -->
+              <div class="blog-content">
 
-                <div class="blog-content">
+                <h4 style="color: white;">shades of birth 2</h4>
 
-                  <div class="blog-meta">
-                    <!-- <p class="blog-category">Design</p> -->
+                <p class="blog-text">
+                  Against the wall sat many other curious people like me, <br>
+                  They too were listening to the story with their emotions and feelings And they too, seemed unhindered by the sudden appearance of color <br>
+                  "What is light when the bodies just performed in the dark?" I thought, and let my eyes wander on the crevices from the movements in white clothings. <br>
+                  Light, however, took us to another level of insight<br>
+                  It brought more synchrony and time dilation.<br>
+                  The clothed storytellers reflected myriad emotion with different lightings<br>
+                  They moved more gracefully than they did in the stygian blackness.<br>
+                  An entity seemed to flow from one body to another<br>
+                  Leaving them pleasantly frozen or in angelic motion.<br>
+                  Music of silence played in the background<br>
+                  While the bodies - gently but deliberately - contacted and flowed.<br>
+                  Sustained energy continued to ooze in the room<br>
+                  and into us curious lot...<br>
+                  Enter Darkness.
+                </p>
 
-                    <!-- <span class="dot"></span> -->
+              </div>
 
-                    <!-- <time datetime="2022-02-23">Fab 23, 2022</time> -->
-                  </div>
-
-                  <!-- <h3 class="blog-item-title">a dance</h3> -->
-                    <h4 style="color: white;">shades of birth 2</h4>
-
-                  <p class="blog-text">
-                    Against the wall sat many other curious people like me, <br>
-                    They too were listening to the story with their emotions and feelings And they too, seemed unhindered by the sudden appearance of color <br>
-                    "What is light when the bodies just performed in the dark?" I thought, and let my eyes wander on the crevices from the movements in white clothings. <br>
-                    Light, however, took us to another level of insight<br>
-                    It brought more synchrony and time dilation.<br>
-                    The clothed storytellers reflected myriad emotion with different lightings<br>
-                    They moved more gracefully than they did in the stygian blackness.<br>
-                    An entity seemed to flow from one body to another<br>
-                    Leaving them pleasantly frozen or in angelic motion.<br>
-                    Music of silence played in the background<br>
-                    While the bodies - gently but deliberately - contacted and flowed.<br>
-                    Sustained energy continued to ooze in the room<br>
-                    and into us curious lot...<br>
-                    Enter Darkness.
-                  </p>
-
-                </div>
-
-              </a>
             </li>
 
           </ul>
 
         </section>
 
-      </article> 
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article> 
+      </article>
 
     </div>
 
   </main>
 
+  <script>
+    // Navigation functionality
+    const navigationLinks = document.querySelectorAll('[data-nav-link]');
+    const pages = document.querySelectorAll('[data-page]');
 
+    // Add event to navigation links
+    for (let i = 0; i < navigationLinks.length; i++) {
+      navigationLinks[i].addEventListener('click', function () {
 
+        for (let i = 0; i < pages.length; i++) {
+          if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+            pages[i].classList.add('active');
+            navigationLinks[i].classList.add('active');
+            window.scrollTo(0, 0);
+          } else {
+            pages[i].classList.remove('active');
+            navigationLinks[i].classList.remove('active');
+          }
+        }
 
+      });
+    }
 
+    // Sidebar toggle functionality
+    const sidebar = document.querySelector('[data-sidebar]');
+    const sidebarBtn = document.querySelector('[data-sidebar-btn]');
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+    sidebarBtn.addEventListener('click', function () {
+      sidebar.classList.toggle('active');
+    });
+
+    // Project filter functionality
+    const select = document.querySelector('[data-select]');
+    const selectItems = document.querySelectorAll('[data-select-item]');
+    const selectValue = document.querySelector('[data-select-value]');
+    const filterItems = document.querySelectorAll('[data-filter-item]');
+
+    select.addEventListener('click', function () {
+      this.classList.toggle('active');
+    });
+
+    // Add event to select items
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener('click', function () {
+
+        let selectedValue = this.innerText.toLowerCase();
+        selectValue.innerText = this.innerText;
+        select.classList.remove('active');
+        filterFunc(selectedValue);
+
+      });
+    }
+
+    // Filter function
+    const filterFunc = function (selectedValue) {
+
+      for (let i = 0; i < filterItems.length; i++) {
+
+        if (selectedValue === 'all') {
+          filterItems[i].classList.add('active');
+        } else if (selectedValue === filterItems[i].dataset.category) {
+          filterItems[i].classList.add('active');
+        } else {
+          filterItems[i].classList.remove('active');
+        }
+
+      }
+
+    }
+
+    // Add event to filter items for default 'all' selection
+    let lastClickedBtn = selectItems[0];
+
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener('click', function () {
+        const selectedValue = this.innerText.toLowerCase();
+        selectValue.innerText = this.innerText;
+        select.classList.remove('active');
+        filterFunc(selectedValue);
+        lastClickedBtn.classList.remove('active');
+        this.classList.add('active');
+        lastClickedBtn = this;
+      });
+    }
+  </script>
 
   <!--
     - ionicon link
