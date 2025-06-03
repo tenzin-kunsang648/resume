@@ -10,7 +10,7 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/profile_logo.PNG" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/images/tk.jpeg" type="image/x-icon">
 
   <!--
     - google font link
@@ -107,37 +107,77 @@
     .sidebar-info {
       position: relative;
       display: flex;
-      justify-content: flex-start;
+      flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
+      text-align: center;
     }
 
     .avatar-box {
       background: var(--bg-gradient-onyx);
+      border-radius: var(--radius-25);
+      padding: 4px;
+      box-shadow: var(--shadow-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--orange-yellow-crayola) 0%, var(--vegas-gold) 100%);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .avatar-box img {
       border-radius: var(--radius-20);
+      display: block;
+    }
+
+    .info-content {
+      width: 100%;
     }
 
     .info-content .name {
       color: var(--white-2);
-      font-size: var(--fs-3);
-      font-weight: var(--fw-500);
-      letter-spacing: -0.25px;
-      margin-bottom: 10px;
+      font-size: var(--fs-2);
+      font-weight: var(--fw-600);
+      letter-spacing: -0.5px;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--orange-yellow-crayola), var(--vegas-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .info-content .title {
-      color: var(--white-1);
-      background: var(--onyx);
-      font-size: var(--fs-8);
-      font-weight: var(--fw-300);
+      color: var(--light-gray);
+      background: linear-gradient(135deg, var(--eerie-black-1), var(--onyx));
+      font-size: var(--fs-7);
+      font-weight: var(--fw-400);
       width: 100%;
-      max-width: none;
-      padding: 8px 12px;
-      border-radius: var(--radius-8);
+      padding: 15px 20px;
+      border-radius: var(--radius-16);
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.6;
       white-space: normal;
       word-wrap: break-word;
+      border: 1px solid var(--jet);
+      box-shadow: var(--shadow-1);
+      font-style: italic;
+      position: relative;
+    }
+
+    .info-content .title::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange-yellow-crayola), transparent);
     }
 
     .info_more-btn {
@@ -919,7 +959,7 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/tk.png" alt="Tenzin Kunsang" width="80">
+          <img src="./assets/images/tk.jpeg" alt="Tenzin Kunsang" width="80">
         </figure>
 
         <div class="info-content">
