@@ -10,7 +10,7 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/tk.jpeg" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/images/tk.JPEG" type="image/x-icon">
 
   <!--
     - google font link
@@ -56,8 +56,11 @@
       --section-padding: 60px;
       --radius-12: 12px;
       --radius-14: 14px;
+      --radius-16: 16px;
       --radius-18: 18px;
+      --radius-20: 20px;
       --radius-24: 24px;
+      --radius-25: 25px;
       --transition-1: 0.25s ease;
       --transition-2: 0.5s ease-in-out;
     }
@@ -125,6 +128,8 @@
       width: max-content;
       padding: 3px 12px;
       border-radius: var(--radius-8);
+      text-align: center;
+      line-height: 1.3;
     }
 
     .info_more-btn {
@@ -526,6 +531,17 @@
       margin-top: 3px;
     }
 
+    .project-clickable {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-clickable:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .filter-list {
       display: none;
     }
@@ -803,13 +819,13 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/tk.jpeg" alt="Tenzin Kunsang" width="80">
+          <img src="./assets/images/tk.JPEG" alt="Tenzin Kunsang" width="80">
         </figure>
 
         <div class="info-content">
           <h1 class="name" title="Tenzin Kunsang">Tenzin Kunsang</h1>
 
-          <p class="title">"I'm nobody! Who are you?" <br> Emily Dickinson</p>
+          <p class="title">"Live the questions now. Perhaps you will then gradually, without noticing it, live along some distant day into the answer." <br> - Rainer Maria Rilke</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -948,35 +964,30 @@
 
         <section class="about-text">
           <p>
-            Just finished my Master's in Computer Science at Northeastern, 
-            specializing in AI & Data Science. My path here wasn't straight: 
-            mathematics at a small liberal arts college, then moving into software development 
-            after graduation, and eventually finding my way to machine learning. 
-            Along the way, I've worked across domains from large-scale enterprise data platforms 
-            to medical imaging systems. Each turn was necessary and reinforced my commitment 
-            to developing technology that amplifies human potential.
+            Just completed my Master's in Computer Science with a focus on AI and Data Science at Northeastern. 
+            My background includes mathematics from a small liberal arts college, software development, and now machine learning. 
+            I've worked on enterprise data platforms and medical imaging systems, with experience spanning computer vision, 
+            machine learning, software development, and data engineering.
           </p>
 
           <p>
-            My work spans computer vision, machine learning, and data engineering, but what drives me is the 
-            conviction that our tools should make us more thoughtful, not less. They should make us more 
-            connected to each other and to the work that matters most. In my community work with 
-            Tibetan organizations, in the classroom as a teaching assistant, and in the code I write, 
-            I'm always asking: How can we build technologies that honor the dignity and innate gifts of every person?
+            I've also volunteered as a Mathematics Educator for Yindayin, a nonprofit Tibetan organization in New York 
+            dedicated to empowering young people through holistic education and mentorship. Each experience has taught me 
+            that the most meaningful work happens at the intersections, whether it's bridging mathematical theory with 
+            practical applications or connecting technical innovation with education and community impact.
           </p>
 
           <p>
-            I'm particularly fascinated by the questions that don't have clean answers yet: 
-            How do we create AI systems that enhance rather than replace human judgment? 
-            What does it mean to build ethical technology in a world of rapid change? 
-            How do we ensure the benefits of these powerful tools reach the communities that need them most?
+            I'm particularly fascinated by the questions that don't have clean answers yet: How do we create systems 
+            that enhance rather than replace human judgment? What does it mean to build ethical technology in a world 
+            of rapid change? How do we ensure the benefits of these powerful tools reach the communities that need them most?
           </p>
           
           <p>
-            Currently exploring opportunities where I can continue this work: developing AI that 
-            serves human flourishing, contributing to research that expands our understanding of 
-            intelligence and perception, and building systems that make complex problems more tractable 
-            for the people trying to solve them.
+            Currently exploring opportunities to develop computer vision applications that amplify human potential, 
+            particularly in areas where visual understanding can make complex problems more accessible. I'm drawn to 
+            research that advances our understanding of perception and intelligence, with a focus on building systems 
+            that help people tackle challenging problems more effectively.
           </p>
         </section>
 
@@ -1100,6 +1111,49 @@
 
             </li>
 
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Digital Humanities Associate</h4>
+              <p>Carleton College Information Technology Service | Northfield, MN</p>
+
+              <span>September 2019 — June 2020</span>
+
+              <p class="timeline-text">
+                • Built language models for NLP tools including Sentiment Analysis and Topic Modeling with R<br>
+                • Developed Python programs for metadata cleanup in London Chronicles research project<br>
+                • Provided TA support for humanities courses and held office hours for digital tools (ArcGIS, Voyant, GitHub, Omeka S)
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Software Development Intern</h4>
+              <p>MIAC - Mortgage Industry Advisory Corporation | New York, NY</p>
+
+              <span>December 2019</span>
+
+              <p class="timeline-text">
+                • Developed fixed rate loan Cash Flow Calculator with C# and Entity Framework for SQL database management<br>
+                • Designed front-end interface using AngularJS, HTML, CSS, and JavaScript
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Sales Development Representative Intern</h4>
+              <p>Queue-it | Minneapolis, MN</p>
+
+              <span>June 2019 — August 2019</span>
+
+              <p class="timeline-text">
+                • Created Python automation scripts for customer analysis reducing manual processes from days to minutes<br>
+                • Analyzed sales data from HubSpot using Python, R, and Excel to drive business decisions
+              </p>
+
+            </li>
+
           </ol>
 
         </section>
@@ -1144,7 +1198,7 @@
             <li class="skills-item">
               <div class="title-wrapper">
                 <h5 class="h5"> 
-                  Python | C++ | Java | R | SQL | JavaScript | PyTorch | TensorFlow | OpenCV | Scikit-learn | Pandas | NumPy | Matplotlib | NLTK | Git
+                  Python | C++ | Java | R | SQL | JavaScript | PyTorch | TensorFlow | OpenCV | Scikit-learn | Pandas | NumPy | Matplotlib | Git
                 </h5>
               </div>
             </li>
@@ -1193,7 +1247,7 @@
           <ul class="project-list">
 
             <li class="project-item active" data-filter-item data-category="computer vision">
-              <a href="https://drive.google.com/file/d/1bIIf1ALv975mLoetL2naWhM9Q1Sfyb-8/view?usp=drive_link" target="_blank">
+              <a href="https://drive.google.com/file/d/1bIIf1ALv975mLoetL2naWhM9Q1Sfyb-8/view?usp=drive_link" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1204,20 +1258,22 @@
                 </figure>
 
                 <h3 class="project-title">Referring Image Segmentation</h3>
-                <p class="project-category">Computer Vision</p>
-                <p class="timeline-text">Parameter-efficient fine-tuning model combining Dense Adapters with state space models and Transformer architecture, updating only 5.8% of backbone parameters. Received "Most Innovative Project" title in class.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">PyTorch</span>
-                  <span class="tech-tag">Transformers</span>
-                  <span class="tech-tag">Parameter-Efficient Finetuning</span>
-                </div>
 
               </a>
+              
+              <p class="project-category">Computer Vision</p>
+              <p class="timeline-text">Parameter-efficient fine-tuning model combining Dense Adapters with state space models and Transformer architecture, updating only 5.8% of backbone parameters. Received "Most Innovative Project" title in class.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Transformers</span>
+                <span class="tech-tag">Parameter-Efficient Finetuning</span>
+              </div>
+
             </li>
 
             <li class="project-item active" data-filter-item data-category="computer vision">
-              <a href="https://drive.google.com/file/d/1DB2RUqoLw_4rJMvky45uND1eZA0rRBH7/view?usp=drive_link" target="_blank">
+              <a href="https://drive.google.com/file/d/1DB2RUqoLw_4rJMvky45uND1eZA0rRBH7/view?usp=drive_link" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1228,16 +1284,18 @@
                 </figure>
 
                 <h3 class="project-title">Depth Estimation for Indoor Scenes</h3>
-                <p class="project-category">Computer Vision</p>
-                <p class="timeline-text">Lightweight semi-supervised adaptation of the Depth Anything framework using teacher-student approach with data augmentations for indoor scenes.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">PyTorch</span>
-                  <span class="tech-tag">Semi-supervised Learning</span>
-                  <span class="tech-tag">Monocular DE</span>
-                </div>
 
               </a>
+              
+              <p class="project-category">Computer Vision</p>
+              <p class="timeline-text">Lightweight semi-supervised adaptation of the Depth Anything framework using teacher-student approach with data augmentations for indoor scenes.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Semi-supervised Learning</span>
+                <span class="tech-tag">Monocular DE</span>
+              </div>
+
             </li>
 
             <li class="project-item active" data-filter-item data-category="computer vision">
@@ -1264,6 +1322,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="computer vision">
+              <a href="https://github.com/tenzin-kunsang648/2DObjectRecognition" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1274,20 +1333,23 @@
                 </figure>
 
                 <h3 class="project-title">Real-time Object Recognition System</h3>
-                <p class="project-category">Computer Vision</p>
-                <p class="timeline-text">Created a real-time object recognition system in C++ using OpenCV that implements dynamic thresholding, morphological filtering, and connected components analysis with moment-based feature extraction for invariant object classification.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">C++</span>
-                  <span class="tech-tag">OpenCV</span>
-                  <span class="tech-tag">Real-time Processing</span>
-                  <span class="tech-tag">Feature Extraction</span>
-                </div>
+
+              </a>
+              
+              <p class="project-category">Computer Vision</p>
+              <p class="timeline-text">Created a real-time object recognition system in C++ using OpenCV that implements dynamic thresholding, morphological filtering, and connected components analysis with moment-based feature extraction for invariant object classification.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Real-time Processing</span>
+                <span class="tech-tag">Feature Extraction</span>
+              </div>
 
             </li>
 
             <li class="project-item active" data-filter-item data-category="machine learning">
-              <a href="https://drive.google.com/file/d/1Llzqt4TqXi-IH7XyOG5Skxgq3SJMbVdG/view?usp=drive_link" target="_blank">
+              <a href="https://drive.google.com/file/d/1Llzqt4TqXi-IH7XyOG5Skxgq3SJMbVdG/view?usp=drive_link" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1298,21 +1360,23 @@
                 </figure>
 
                 <h3 class="project-title">Plant Trait Classification</h3>
-                <p class="project-category">Machine Learning</p>
-                <p class="timeline-text">Multi-modal deep learning system combining ResNet50, InceptionV3, and EfficientNet to classify plant traits using text, numerical, and image data streams.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">PyTorch</span>
-                  <span class="tech-tag">Multi-modal</span>
-                  <span class="tech-tag">CNN Ensemble</span>
-                  <span class="tech-tag">Deep Learning</span>
-                </div>
 
               </a>
+              
+              <p class="project-category">Machine Learning</p>
+              <p class="timeline-text">Multi-modal deep learning system combining ResNet50, InceptionV3, and EfficientNet to classify plant traits using text, numerical, and image data streams.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Multi-modal</span>
+                <span class="tech-tag">CNN Ensemble</span>
+                <span class="tech-tag">Deep Learning</span>
+              </div>
+
             </li>
 
             <li class="project-item active" data-filter-item data-category="mobile development">
-              <a href="https://github.com/tenzin-kunsang648/stage" target="_blank">
+              <a href="https://github.com/tenzin-kunsang648/stage" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1323,20 +1387,23 @@
                 </figure>
 
                 <h3 class="project-title">Stage - Social Music Platform</h3>
-                <p class="project-category">Mobile Development</p>
-                <p class="timeline-text">Android social platform for music lovers, integrating Spotify API and Firebase for dynamic user experience and music sharing capabilities.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">Android</span>
-                  <span class="tech-tag">Spotify API</span>
-                  <span class="tech-tag">Firebase</span>
-                  <span class="tech-tag">Java</span>
-                </div>
 
               </a>
+              
+              <p class="project-category">Mobile Development</p>
+              <p class="timeline-text">Android social platform for music lovers, integrating Spotify API and Firebase for dynamic user experience and music sharing capabilities.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">Android</span>
+                <span class="tech-tag">Spotify API</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Java</span>
+              </div>
+
             </li>
 
             <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/tenzin-kunsang648/HomeSearch" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1347,19 +1414,23 @@
                 </figure>
 
                 <h3 class="project-title">Find a Home - K-Nearest Neighbors</h3>
-                <p class="project-category">Machine Learning</p>
-                <p class="timeline-text">Home clustering system using web scraping with BeautifulSoup, FourSquare API, and Apify to gather Minneapolis neighborhood data, applying K-Nearest Neighbors for insightful home and venue correlations.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">Python</span>
-                  <span class="tech-tag">K-NN</span>
-                  <span class="tech-tag">Web Scraping</span>
-                  <span class="tech-tag">APIs</span>
-                </div>
+
+              </a>
+              
+              <p class="project-category">Machine Learning</p>
+              <p class="timeline-text">Home clustering system using web scraping with BeautifulSoup, FourSquare API, and Apify to gather Minneapolis neighborhood data, applying K-Nearest Neighbors for insightful home and venue correlations.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">K-NN</span>
+                <span class="tech-tag">Web Scraping</span>
+                <span class="tech-tag">APIs</span>
+              </div>
 
             </li>
 
             <li class="project-item active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/tenzin-kunsang648/StockPrediction" target="_blank" class="project-clickable">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -1370,15 +1441,18 @@
                 </figure>
 
                 <h3 class="project-title">Stock Predictor - LSTM Neural Networks</h3>
-                <p class="project-category">Machine Learning</p>
-                <p class="timeline-text">LSTM Neural Network model for stock price prediction using Yahoo Finance data, optimized through cross-validation and backtesting on major companies like Apple, Amazon, and Google.</p>
-                
-                <div class="project-tech-stack">
-                  <span class="tech-tag">TensorFlow</span>
-                  <span class="tech-tag">LSTM</span>
-                  <span class="tech-tag">Time Series</span>
-                  <span class="tech-tag">Financial Data</span>
-                </div>
+
+              </a>
+              
+              <p class="project-category">Machine Learning</p>
+              <p class="timeline-text">LSTM Neural Network model for stock price prediction using Yahoo Finance data, optimized through cross-validation and backtesting on major companies like Apple, Amazon, and Google.</p>
+              
+              <div class="project-tech-stack">
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">LSTM</span>
+                <span class="tech-tag">Time Series</span>
+                <span class="tech-tag">Financial Data</span>
+              </div>
 
             </li>
 
@@ -1400,29 +1474,37 @@
         <div class="interests-grid">
 
           <div class="interest-card">
-            <h4>Recent Favorite Books</h4>
+            <h4>Current Reads</h4>
             
             <div class="book-item">
               <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
               <div class="book-info">
-                <div class="book-title">The Banshees of Inisherin</div>
-                <div class="book-author">Martin McDonagh</div>
+                <div class="book-title">Near to the Wild Heart</div>
+                <div class="book-author">Clarice Lispector</div>
               </div>
             </div>
 
             <div class="book-item">
               <div class="book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
               <div class="book-info">
-                <div class="book-title">Klara and the Sun</div>
-                <div class="book-author">Kazuo Ishiguro</div>
+                <div class="book-title">Tomorrow, and Tomorrow, and Tomorrow</div>
+                <div class="book-author">Gabrielle Zevin</div>
               </div>
             </div>
 
             <div class="book-item">
               <div class="book-cover" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
               <div class="book-info">
-                <div class="book-title">The Seven Husbands of Evelyn Hugo</div>
-                <div class="book-author">Taylor Jenkins Reid</div>
+                <div class="book-title">I Who Have Never Known Men</div>
+                <div class="book-author">Jacqueline Harpman</div>
+              </div>
+            </div>
+
+            <div class="book-item">
+              <div class="book-cover" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+              <div class="book-info">
+                <div class="book-title">Norwegian Wood</div>
+                <div class="book-author">Haruki Murakami</div>
               </div>
             </div>
 
@@ -1452,6 +1534,14 @@
               <div class="movie-info">
                 <div class="movie-title">The Banshees of Inisherin</div>
                 <div class="movie-director">Martin McDonagh</div>
+              </div>
+            </div>
+
+            <div class="movie-item">
+              <div class="movie-poster" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+              <div class="movie-info">
+                <div class="movie-title">Chungking Express</div>
+                <div class="movie-director">Wong Kar-wai</div>
               </div>
             </div>
 
@@ -1588,71 +1678,4 @@
     const sidebar = document.querySelector('[data-sidebar]');
     const sidebarBtn = document.querySelector('[data-sidebar-btn]');
 
-    sidebarBtn.addEventListener('click', function () {
-      sidebar.classList.toggle('active');
-    });
-
-    // Project filter functionality
-    const select = document.querySelector('[data-select]');
-    const selectItems = document.querySelectorAll('[data-select-item]');
-    const selectValue = document.querySelector('[data-select-value]');
-    const filterItems = document.querySelectorAll('[data-filter-item]');
-
-    select.addEventListener('click', function () {
-      this.classList.toggle('active');
-    });
-
-    // Add event to select items
-    for (let i = 0; i < selectItems.length; i++) {
-      selectItems[i].addEventListener('click', function () {
-
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        select.classList.remove('active');
-        filterFunc(selectedValue);
-
-      });
-    }
-
-    // Filter function
-    const filterFunc = function (selectedValue) {
-
-      for (let i = 0; i < filterItems.length; i++) {
-
-        if (selectedValue === 'all') {
-          filterItems[i].classList.add('active');
-        } else if (selectedValue === filterItems[i].dataset.category) {
-          filterItems[i].classList.add('active');
-        } else {
-          filterItems[i].classList.remove('active');
-        }
-
-      }
-
-    }
-
-    // Add event to filter items for default 'all' selection
-    let lastClickedBtn = selectItems[0];
-
-    for (let i = 0; i < selectItems.length; i++) {
-      selectItems[i].addEventListener('click', function () {
-        const selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        select.classList.remove('active');
-        filterFunc(selectedValue);
-        lastClickedBtn.classList.remove('active');
-        this.classList.add('active');
-        lastClickedBtn = this;
-      });
-    }
-  </script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
-</html>
+    sidebarBtn.addEventListener('click
