@@ -608,43 +608,135 @@
 
     .blog-posts-list {
       list-style: none;
+      display: grid;
+      gap: 30px;
     }
 
     .blog-post-item {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--jet);
-    }
-
-    .blog-post-item:last-child {
-      margin-bottom: 0;
-      border-bottom: none;
-    }
-
-    .blog-banner-box {
-      width: 100%;
-      height: 200px;
-      border-radius: var(--radius-12);
+      background: var(--border-gradient-onyx);
+      border-radius: var(--radius-16);
+      padding: 25px;
+      cursor: pointer;
+      transition: var(--transition-1);
+      position: relative;
       overflow: hidden;
-      margin-bottom: 15px;
     }
 
-    .blog-banner-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .blog-post-item::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: var(--eerie-black-1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .blog-post-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-3);
+    }
+
+    .blog-header {
+      margin-bottom: 20px;
+    }
+
+    .blog-title {
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-4);
+      font-weight: var(--fw-500);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .blog-meta {
+      color: var(--light-gray-70);
+      font-size: var(--fs-7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .blog-preview {
+      color: var(--light-gray);
+      font-size: var(--fs-5);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .blog-preview::after {
+      content: '...';
+      color: var(--orange-yellow-crayola);
+      font-weight: var(--fw-500);
+    }
+
+    .blog-expand-hint {
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      opacity: 0.7;
       transition: var(--transition-1);
     }
 
-    .blog-content {
-      padding: 15px;
+    .blog-post-item:hover .blog-expand-hint {
+      opacity: 1;
     }
 
-    .blog-text {
+    .blog-full-content {
+      display: none;
       color: var(--light-gray);
-      font-size: var(--fs-6);
-      font-weight: var(--fw-300);
-      line-height: 1.6;
+      font-size: var(--fs-5);
+      line-height: 1.8;
+      font-style: italic;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--jet);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .blog-full-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .blog-close {
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: var(--transition-1);
+    }
+
+    .blog-close:hover {
+      color: var(--white-2);
+    }
+
+    .poetry-line {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .poetry-stanza {
+      margin-bottom: 20px;
+    }
+
+    .poetry-stanza:last-child {
+      margin-bottom: 0;
     }
 
     /* New styles for enhanced sections */
@@ -1586,46 +1678,115 @@
 
           <ul class="blog-posts-list">
 
-            <li class="blog-post-item">
+            <li class="blog-post-item" onclick="toggleBlogContent(this)">
+              
+              <div class="blog-header">
+                <h4 class="blog-title">
+                  <ion-icon name="flower-outline"></ion-icon>
+                  shades of birth 1
+                </h4>
+                <p class="blog-meta">Poetry • Contemplative</p>
+              </div>
 
-              <figure class="blog-banner-box">
-                <img src="./assets/images/tk_bricks.png" alt="shades of birth" loading="lazy">
-              </figure>
+              <div class="blog-preview">
+                A child was born; the story was told in black and white.
+                Narrators succumbed to their vision with blind eyes
+              </div>
 
-              <div class="blog-content">
+              <div class="blog-expand-hint">
+                <span>Read full poem</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
 
-                <h4 style="color: white;">shades of birth 1</h4>
+              <div class="blog-full-content">
+                <div class="poetry-stanza">
+                  <div class="poetry-line">A child was born; the story was told in black and white.</div>
+                  <div class="poetry-line">Narrators succumbed to their vision with blind eyes,</div>
+                  <div class="poetry-line">Their sharp breaths filled the voids in the darkness,</div>
+                  <div class="poetry-line">They were breathless and quiet, restless and calm.</div>
+                </div>
+                
+                <div class="poetry-stanza">
+                  <div class="poetry-line">I lied amidst the chaos and peace,</div>
+                  <div class="poetry-line">Feeling energies from perspired beings</div>
+                  <div class="poetry-line">Hearing the storytellers drag their bodies from one spot to another.</div>
+                </div>
+                
+                <div class="poetry-stanza">
+                  <div class="poetry-line">(The uninvited light -from a curtain often drawn between the story -was menacing)</div>
+                  <div class="poetry-line">Dancing tellers of the tale found their way to the fabric of my skin,</div>
+                  <div class="poetry-line">They twisted and slithered and elevated on the ground,</div>
+                  <div class="poetry-line"><strong>Enter Color.</strong></div>
+                </div>
 
-                <p class="blog-text">
-                  A child was born; the story was told in black and white.<br>
-                  Narrators succumbed to their vision with blind eyes, <br>
-                  Their sharp breaths filled the voids in the darkness, <br>
-                  They were breathless and quiet, restless and calm.<br>
-                  I lied amidst the chaos and peace,<br>
-                  Feeling energies from perspired beings<br>
-                  Hearing the storytellers drag their bodies from one spot to another.<br>
-                  (The uninvited light -from a curtain often drawn between the story -was menacing)<br>
-                  Dancing tellers of the tale found their way to the fabric of my skin,<br>
-                  They twisted and slithered and elevated on the ground,<br>
-                  Enter Color.
-                </p>
-
+                <div class="blog-close" onclick="event.stopPropagation(); toggleBlogContent(this.closest('.blog-post-item'))">
+                  <span>Close</span>
+                  <ion-icon name="chevron-up-outline"></ion-icon>
+                </div>
               </div>
 
             </li>
 
-            <li class="blog-post-item">
+            <li class="blog-post-item" onclick="toggleBlogContent(this)">
 
-              <div class="blog-content">
+              <div class="blog-header">
+                <h4 class="blog-title">
+                  <ion-icon name="eye-outline"></ion-icon>
+                  shades of birth 2
+                </h4>
+                <p class="blog-meta">Poetry • Reflective</p>
+              </div>
 
-                <h4 style="color: white;">shades of birth 2</h4>
+              <div class="blog-preview">
+                Against the wall sat many other curious people like me,
+                They too were listening to the story with their emotions and feelings
+              </div>
 
-                <p class="blog-text">
-                  Against the wall sat many other curious people like me, <br>
-                  They too were listening to the story with their emotions and feelings And they too, seemed unhindered by the sudden appearance of color <br>
-                  "What is light when the bodies just performed in the dark?" I thought, and let my eyes wander on the crevices from the movements in white clothings. <br>
-                  Light, however, took us to another level of insight<br>
-                  It brought more synchrony and time dilation.<br>
+              <div class="blog-expand-hint">
+                <span>Read full poem</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </div>
+
+              <div class="blog-full-content">
+                <div class="poetry-stanza">
+                  <div class="poetry-line">Against the wall sat many other curious people like me,</div>
+                  <div class="poetry-line">They too were listening to the story with their emotions and feelings</div>
+                  <div class="poetry-line">And they too, seemed unhindered by the sudden appearance of color</div>
+                </div>
+                
+                <div class="poetry-stanza">
+                  <div class="poetry-line">"What is light when the bodies just performed in the dark?" I thought,</div>
+                  <div class="poetry-line">and let my eyes wander on the crevices from the movements in white clothings.</div>
+                  <div class="poetry-line">Light, however, took us to another level of insight</div>
+                  <div class="poetry-line">It brought more synchrony and time dilation.</div>
+                </div>
+                
+                <div class="poetry-stanza">
+                  <div class="poetry-line">The clothed storytellers reflected myriad emotion with different lightings</div>
+                  <div class="poetry-line">They moved more gracefully than they did in the stygian blackness.</div>
+                  <div class="poetry-line">An entity seemed to flow from one body to another</div>
+                  <div class="poetry-line">Leaving them pleasantly frozen or in angelic motion.</div>
+                </div>
+                
+                <div class="poetry-stanza">
+                  <div class="poetry-line">Music of silence played in the background</div>
+                  <div class="poetry-line">While the bodies - gently but deliberately - contacted and flowed.</div>
+                  <div class="poetry-line">Sustained energy continued to ooze in the room</div>
+                  <div class="poetry-line">and into us curious lot...</div>
+                  <div class="poetry-line"><strong>Enter Darkness.</strong></div>
+                </div>
+
+                <div class="blog-close" onclick="event.stopPropagation(); toggleBlogContent(this.closest('.blog-post-item'))">
+                  <span>Close</span>
+                  <ion-icon name="chevron-up-outline"></ion-icon>
+                </div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section><br>
                   The clothed storytellers reflected myriad emotion with different lightings<br>
                   They moved more gracefully than they did in the stygian blackness.<br>
                   An entity seemed to flow from one body to another<br>
@@ -1678,4 +1839,78 @@
     const sidebar = document.querySelector('[data-sidebar]');
     const sidebarBtn = document.querySelector('[data-sidebar-btn]');
 
-    sidebarBtn.addEventListener('click
+    sidebarBtn.addEventListener('click', function () {
+      sidebar.classList.toggle('active');
+    });
+
+    // Project filter functionality
+    const select = document.querySelector('[data-select]');
+    const selectItems = document.querySelectorAll('[data-select-item]');
+    const selectValue = document.querySelector('[data-select-value]');
+    const filterItems = document.querySelectorAll('[data-filter-item]');
+
+    select.addEventListener('click', function () {
+      this.classList.toggle('active');
+    });
+
+    // Add event to select items
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener('click', function () {
+
+        let selectedValue = this.innerText.toLowerCase();
+        selectValue.innerText = this.innerText;
+        select.classList.remove('active');
+        filterFunc(selectedValue);
+
+      });
+    }
+
+    // Filter function
+    const filterFunc = function (selectedValue) {
+
+      for (let i = 0; i < filterItems.length; i++) {
+
+        if (selectedValue === 'all') {
+          filterItems[i].classList.add('active');
+        } else if (selectedValue === filterItems[i].dataset.category) {
+          filterItems[i].classList.add('active');
+        } else {
+          filterItems[i].classList.remove('active');
+        }
+
+      }
+
+    }
+
+    // Add event to filter items for default 'all' selection
+    let lastClickedBtn = selectItems[0];
+
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener('click', function () {
+        const selectedValue = this.innerText.toLowerCase();
+        selectValue.innerText = this.innerText;
+        select.classList.remove('active');
+        filterFunc(selectedValue);
+        lastClickedBtn.classList.remove('active');
+        this.classList.add('active');
+        lastClickedBtn = this;
+      });
+    }
+
+    // Blog toggle functionality
+    function toggleBlogContent(blogItem) {
+      const fullContent = blogItem.querySelector('.blog-full-content');
+      const expandHint = blogItem.querySelector('.blog-expand-hint');
+      const preview = blogItem.querySelector('.blog-preview');
+      
+      if (fullContent.classList.contains('active')) {
+        fullContent.classList.remove('active');
+        expandHint.style.display = 'flex';
+        preview.style.display = 'block';
+      } else {
+        fullContent.classList.add('active');
+        expandHint.style.display = 'none';
+        preview.style.display = 'none';
+      }
+    }
+  </script>
